@@ -62,6 +62,16 @@ const GuestsInput: FC<GuestsInputProps> = ({ className = 'flex-1',setNumberOfRoo
 		}
 	},[guestInfantsInputValue, guestAdultsInputValue, guestChildrenInputValue, numberOfRoomSelected])
 
+
+
+
+
+	useEffect(() => {
+		if (!guestAdultsInputValue || guestAdultsInputValue === 0) {
+		  setGuestAdultsInputValue(1);
+		}
+	  }, []);
+	  
 	return (
 		<Popover className={`relative flex ${className}`}>
 			{({ open }) => (

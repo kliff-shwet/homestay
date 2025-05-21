@@ -79,6 +79,7 @@ const ListingImageGallery: FC<Props> = ({ images = DEMO_IMAGE }) => {
 	}
 
 	const {imagess} = useImages()
+	console.log(imagess,"kjkjhkjkjkjhkjhjhk")
 	const updatedImages = [...imagess].map(
 		(item, index): ListingGalleryImage => {
 			return {
@@ -87,7 +88,7 @@ const ListingImageGallery: FC<Props> = ({ images = DEMO_IMAGE }) => {
 			}
 		},
 	)
-
+console.log(updatedImages,"jkadlsjl")
 	const renderContent = () => {
 		return (
 			<div className=" ">
@@ -128,6 +129,7 @@ const ListingImageGallery: FC<Props> = ({ images = DEMO_IMAGE }) => {
 								height={480}
 								sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 350px"
 							/>
+							<h1></h1>
 						</div>
 					))}
 				</div>

@@ -48,6 +48,7 @@ import ModalSelectDate from '@/components/ModalSelectDate'
 import ModalReserveMobile from '../../(components)/ModalReserveMobile'
 import { setPriority } from 'node:os'
 
+
 export interface ListingStayDetailPageProps { }
 
 
@@ -86,6 +87,9 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 	const [totalPrice, setTotalPrice] = useState<number>(0);
 
 
+
+
+
 	const getRoomPrice = (currentActiveRoom: any) => {
 		const price = listingDetail?.rooms?.find((room: any) => room?.room_type?.name.toLowerCase() === currentActiveRoom?.toLowerCase())?.room_price
 		return price;
@@ -104,83 +108,6 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 		return tomorrow;
 	});
 
-	const categories = [
-		{
-			name: 'Classic',
-			posts: [
-				{
-					id: 1,
-					title: 'Does drinking coffee make you smarter?',
-					date: '5h ago',
-					commentCount: 5,
-					shareCount: 2,
-					imageUrl: [
-						"https://media.istockphoto.com/id/1419410282/photo/silent-forest-in-spring-with-beautiful-bright-sun-rays.jpg?s=612x612&w=0&k=20&c=UHeb1pGOw6ozr6utsenXHhV19vW6oiPIxDqhKCS2Llk=",
-						"https://st5.depositphotos.com/23188010/77062/i/450/depositphotos_770624600-stock-photo-green-field-morning-render-illustration.jpg",
-					]
-				},
-			],
-		},
-		{
-			name: 'Superior',
-			posts: [
-				{
-					id: 1,
-					title: 'Is tech making coffee better or worse?',
-					date: 'Jan 7',
-					commentCount: 29,
-					shareCount: 16,
-					imageUrl: [
-						"https://media.istockphoto.com/id/814423752/photo/eye-of-model-with-colorful-art-make-up-close-up.jpg?s=612x612&w=0&k=20&c=l15OdMWjgCKycMMShP8UK94ELVlEGvt7GmB_esHWPYE=",
-						"https://images.unsplash.com/photo-1575936123452-b67c3203c357?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
-						"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9YYh5Fk1u9VsWWr1MhkyQeOzeNbtnnMO96g&s",
-						"https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg",
-					]
-				},
-				{
-					id: 2,
-					title: 'The most innovative things happening in coffee',
-					date: 'Mar 19',
-					commentCount: 24,
-					shareCount: 12,
-					imageUrl: [
-						"https://t3.ftcdn.net/jpg/02/70/35/00/360_F_270350073_WO6yQAdptEnAhYKM5GuA9035wbRnVJSr.jpg",
-						"https://images.unsplash.com/photo-1575936123452-b67c3203c357?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
-						"https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg",
-					]
-				},
-			],
-		},
-		{
-			name: 'Family',
-			posts: [
-				{
-					id: 1,
-					title: 'Ask Me Anything: 10 answers to your questions about coffee',
-					date: '2d ago',
-					commentCount: 9,
-					shareCount: 5,
-					imageUrl: [
-						"https://cdn.pixabay.com/photo/2018/08/04/11/30/draw-3583548_1280.png",
-						"https://images.unsplash.com/photo-1575936123452-b67c3203c357?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
-						"https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg",
-					]
-				},
-				{
-					id: 2,
-					title: "The worst advice we've ever heard about coffee",
-					date: '4d ago',
-					commentCount: 1,
-					shareCount: 2,
-					imageUrl: [
-						"https://media.istockphoto.com/id/814423752/photo/eye-of-model-with-colorful-art-make-up-close-up.jpg?s=612x612&w=0&k=20&c=l15OdMWjgCKycMMShP8UK94ELVlEGvt7GmB_esHWPYE=",
-						"https://images.unsplash.com/photo-1575936123452-b67c3203c357?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
-						"https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg",
-					]
-				},
-			],
-		},
-	]
 
 	function getImageUrlsBySpaceType(spaceType: any) {
 		return listingDetail?.result?.property_photos?.filter((photo: any) => photo.space_type === spaceType)
@@ -191,7 +118,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 			.map((photo: any) => photo.message);
 	}
 
-	// console.log(getImageUrlsBySpaceType(2))
+
 
 
 	const thisPathname = usePathname()
@@ -471,7 +398,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 						</div>
 					}
 
-					{
+					{/* {
 						result?.beds > 0 &&
 						<div className="flex items-center space-x-3">
 							<svg
@@ -514,7 +441,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 								{result?.accommodates} <span className="hidden sm:inline-block">beds</span>
 							</span>
 						</div>
-					}
+					} */}
 
 					{
 						result?.bathrooms > 0 &&
@@ -1072,8 +999,8 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 							sizeClass="px-5 sm:px-7 py-3 !rounded-2xl"
 							// onClick={openModal}
 							// onClick={numberOfRoomSelected == 0 ? ()=>setGuestLimitExceed(true) : openModal}
-							// onClick={()=>handleErrorMessageDisplay(openModal)}
-							onClick={()=>handleErrorMessageDisplay(true)}
+							onClick={()=>handleErrorMessageDisplay(openModal)}
+							// onClick={()=>handleErrorMessageDisplay(true)}
 						>
 							Reserve
 						</ButtonPrimary>
@@ -1158,6 +1085,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 
 								<div className="nc-StayCard2 grid grid-cols-1 sm:grid-cols-3 gap-5 group relative w-full border-t border-neutral-200 dark:border-neutral-800 pt-5">
 									{getImageUrlsBySpaceType(item?.space_type).length > 0 &&
+									
 										<div className="relative w-full">
 											<GallerySlider3
 												uniqueID="StayCard2_sampleID"
@@ -1167,9 +1095,9 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 												imageClass="rounded-lg"
 												href="javascript:void(0)"
 											/>
-											<div className='mt-2' onClick={() => setActiveModal(item?.space_type)}>
+											{/* <div className='mt-2' onClick={() => setActiveModal(item?.space_type)}>
 												<Badge name={`${getImageUrlsBySpaceType(item?.space_type).length} Photos →`} color="red" className='cursor-pointer' />
-											</div>
+											</div> */}
 										</div>}
 
 									<div className='col-span-2'>
@@ -1181,6 +1109,12 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 														{item?.room_type}
 													</p>
 													<div className="flex items-center justify-between space-x-5 mt-3 text-sm text-neutral-700 dark:text-neutral-300 xl:justify-start">
+														
+													<div className="text-center">
+														<img className='h-6' src="/user.png" alt="userimage" />
+															<p>x {item.accommodates}</p>
+														</div>
+														
 														<div className="text-center">
 															<svg
 																xmlns="http://www.w3.org/2000/svg"
@@ -1264,58 +1198,22 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 															</svg>
 															<p>x 1</p>
 														</div>
+
+
+													
+
+														
 													</div>
 												</div>
 												<div className="flex items-start flex-col">
 													<p className="text-base font-semibold">
 														₹{item?.room_price} <span className="text-sm text-neutral-500 dark:text-neutral-400">/1 nights</span>
 													</p>
+
+
+													
 						<form>
-						{/* <select
-								id="rooms"
-								className="bg-gray-50 w-full min-w-[9rem] my-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-[#111827] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-									onChange={(e) => {
-										const selectedValue = parseInt(e.target.value);
-
-										if (selectedValue === 0) {
-										const resetRoom = { type: '', count: 1, accommodates: 0, guest_fee: 0 };
-										setCurrentActiveRoom(resetRoom);
-										setRoomPrice(0);
-										setNumberOfRoomSelected(0);
-										localStorage.removeItem("selectedRoom"); 
-										} else {
-										const selectedRoomData = {
-										type: item?.room_type,
-										count: selectedValue,
-										accommodates: item?.accommodates,
-										guest_fee: item?.guest_fee,
-										room_price: item?.room_price,
-										room_id:item?.roomid,
-										space_type: rooms?.space_type
-										};
-
-										setCurrentActiveRoom(selectedRoomData);
-										setRoomPrice(selectedValue * item?.room_price);
-										setNumberOfRoomSelected(selectedValue);
-
-										// Save to localStorage
-										localStorage.setItem("selectedRoom", JSON.stringify(selectedRoomData));
-										}
-										}}
-																
-															// disabled={currentActiveRoom.type !== item?.room_type && currentActiveRoom.count == 0}
-															>
-										<option value='0' selected={currentActiveRoom.type !== item?.room_type}>Select {item?.room_type}</option>
-										{[...Array(item?.total_rooms)].map((_, index) => {
-											const value = index + 1;
-											return (
-												
-												<option key={value} value={`${value} room`}>
-													{value} {item?.room_type}
-												</option>
-												);
-											})}
-										</select> */}
+						
 
 
 						<select
@@ -1396,117 +1294,6 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 		)
 	}
 
-	const renderRoomSection1 = () => {
-		return (
-			<div className='listingSection__wrap'>
-				<div className="flex w-full justify-center">
-					<div className="w-full">
-						<TabGroup>
-							<TabList className="flex gap-4">
-								{categories.map(({ name }) => (
-									<Tab
-										key={name}
-										className="rounded-full px-5 text-lg font-semibold text-gray-800 dark:text-white 
-									focus:outline-none data-[selected]:bg-gray-300 data-[hover]:bg-gray-200 
-									data-[selected]:data-[hover]:bg-gray-200 dark:data-[selected]:bg-white/10 
-									dark:data-[hover]:bg-white/5 dark:data-[selected]:data-[hover]:bg-white/10 
-									data-[focus]:outline-1 data-[focus]:outline-gray-800 dark:data-[focus]:outline-white"
-									>
-										{name}
-									</Tab>
-								))}
-							</TabList>
-							<TabPanels>
-								{categories.map(({ name, posts }) => (
-									<TabPanel key={name} className="rounded-xl">
-										{posts.map((post) => (
-											<div key={post.id} className='pt-5'>
-												<div className="nc-StayCard2 grid grid-cols-1 sm:grid-cols-3 gap-5 group relative w-full border-t border-neutral-200 dark:border-neutral-800 pt-5">
-													<div className="relative w-full">
-														<GallerySlider
-															uniqueID="StayCard2_sampleID"
-															ratioClass="aspect-w-12 aspect-h-9"
-															galleryImgs={post.imageUrl}
-															imageClass="rounded-lg"
-															href="javascript:void(0)"
-														/>
-														<div className='mt-2' onClick={() => setActiveModal(post.id)}>
-															<Badge name={`${post.imageUrl.length} Photos →`} color="red" className='cursor-pointer' />
-														</div>
-													</div>
-
-													<div className='col-span-2'>
-														<div className="mt-3 space-y-3">
-
-															<div className="flex items-start justify-between">
-																<div>
-																	<p className="text-base font-semibold">
-																		Single Room
-																	</p>
-																	<div className="flex items-center justify-between space-x-5 mt-3 text-sm text-neutral-700 dark:text-neutral-300 xl:justify-start">
-																		<div className="text-center">
-																			<IoBedOutline className='w-5 h-5' />
-																			<p>x 1</p>
-																		</div>
-																		<div className="text-center">
-																			<HiOutlineUsers className='w-5 h-5' />
-																			<p>x 2</p>
-																		</div>
-																		<div className="text-center">
-																			<FaBaby className='w-5 h-5' />
-																			<p>x 1</p>
-																		</div>
-																	</div>
-																</div>
-																<div className="flex items-start flex-col">
-																	<p className="text-base font-semibold">
-																		₹1.00 <span className="text-sm text-neutral-500 dark:text-neutral-400">/1 nights</span>
-																	</p>
-																	<form>
-																		<select
-																			id="rooms"
-																			className="bg-gray-50 w-full min-w-[9rem] my-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-[#111827] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-																		>
-																			<option value="1 room">1 Room</option>
-																			<option value="2 room">2 Room</option>
-																		</select>
-																	</form>
-																	<ButtonPrimary sizeClass="px-4 py-2 sm:px-5">Enquire Now</ButtonPrimary>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-
-												{/* room modal image gallery  */}
-												<CustomRoomModal
-													key={post.id}
-													isOpen={activeModal === post.id}
-													closeModal={() => setActiveModal(null)}
-													title={`${name} Room`}
-												>
-													<GallerySlider
-														uniqueID="StayCard2_sampleID"
-														ratioClass="aspect-w-12 aspect-h-9"
-														galleryImgs={post.imageUrl}
-														imageClass="rounded-lg"
-														href="javascript:void(0)"
-													/>
-												</CustomRoomModal>
-											</div>
-										))}
-									</TabPanel>
-								))}
-							</TabPanels>
-						</TabGroup>
-					</div>
-				</div>
-
-			</div>
-
-
-		)
-	}
 
 	const { result, amenities, attractions, excursions, rooms } = listingDetail ?? {}; // Use nullish coalescing (??) to provide a fallback empty object
 	const { description } = listingDescription ?? {};
