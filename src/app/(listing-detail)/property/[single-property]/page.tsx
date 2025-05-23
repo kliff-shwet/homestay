@@ -148,11 +148,11 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 		setSelectedRooms((prevState: any) => ({
 			...prevState,
 			[roomType]: newSelectedRooms,
-			
+
 		}));
 
-		localStorage.setItem("rooms" ,JSON.stringify(selectedRooms))
-        // console.log(rooms,'rupesh')
+		localStorage.setItem("rooms", JSON.stringify(selectedRooms))
+		// console.log(rooms,'rupesh')
 		// Update the total price
 		setRoomPrice((prevTotal: any) => prevTotal + priceDifference);
 	};
@@ -247,18 +247,16 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 		fetchListingDescription()
 	}, [fetchListingDetails, fetchListingDescription])
 
-	// group room of each category seperately 
 	const categorizeRooms = (rooms: any) => {
-		// console.log(rooms,"rooommmmms")
 		const categorized: any = {}
 
 		for (const room of rooms) {
-		
+
 
 			const roomType = room?.room_type?.name;
-		
+
 			if (!categorized[roomType]) {
-				
+
 				categorized[roomType] = {
 					room_type: roomType,
 					room_price: room.room_price,
@@ -268,7 +266,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 					accommodates: room?.accommodates,
 					guest_fee: room?.room_pricing[0]?.guest_fee,
 					total_rooms: 1,
-					roomid:room.id
+					roomid: room.id
 				}
 				// console.log(room?.space_type,"ddvvv")
 			} else {
@@ -280,34 +278,32 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 	}
 
 
-	// error messages display handling 
-	const handleErrorMessageDisplay = (openModal:any) =>{
-
-		if(numberOfRoomSelected == 0){
+	const handleErrorMessageDisplay = (openModal: any) => {
+		if (numberOfRoomSelected == 0) {
 			setSelectRoomFirstWarning(true)
 			setSelectGuestWarning(false)
 			setGuestLimitExceed(false)
 		}
-		else if(guestAdultsInputValue == 0){
+		else if (guestAdultsInputValue == 0) {
 			setSelectGuestWarning(true)
 			setSelectRoomFirstWarning(false)
 			setGuestLimitExceed(false)
 		}
-		else if((guestAdultsInputValue+guestChildrenInputValue-extraGuest) > numberOfRoomSelected){
+		else if ((guestAdultsInputValue + guestChildrenInputValue - extraGuest) > numberOfRoomSelected) {
 			setSelectGuestWarning(false)
 			setSelectRoomFirstWarning(false)
 			setGuestLimitExceed(true)
 		}
-		else{
+		else {
 			openModal()
 		}
 	}
 
-	useEffect(()=>{
-		if(guestAdultsInputValue+guestChildrenInputValue-extraGuest > numberOfRoomSelected){
-			handleErrorMessageDisplay(()=>{})
+	useEffect(() => {
+		if (guestAdultsInputValue + guestChildrenInputValue - extraGuest > numberOfRoomSelected) {
+			handleErrorMessageDisplay(() => { })
 		}
-	},[guestAdultsInputValue, guestChildrenInputValue])
+	}, [guestAdultsInputValue, guestChildrenInputValue])
 
 
 	const renderSection1 = ({ result }: any) => {
@@ -910,11 +906,25 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 				<form className="flex flex-col rounded-3xl border border-neutral-200 dark:border-neutral-700">
 					<StayDatesRangeInput previousPrice={currentroomPrice} propertyDates={result?.property_dates} setDaysToStay={setDaysToStay} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} className="z-[11] flex-1" />
 					<div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
-					<GuestsInput setNumberOfRoomSelected={setNumberOfRoomSelected} numberOfRoomSelected={numberOfRoomSelected} guestLimitExceed={guestLimitExceed} setGuestLimitExceed={setGuestLimitExceed} currentActiveRoom={currentActiveRoom} guestAdultsInputValue={guestAdultsInputValue} guestChildrenInputValue={guestChildrenInputValue} guestInfantsInputValue={guestInfantsInputValue} setGuestAdultsInputValue={setGuestAdultsInputValue} setGuestChildrenInputValue={setGuestChildrenInputValue} setGuestInfantsInputValue={setGuestInfantsInputValue} className="flex-1" />
+					<GuestsInput
+					setNumberOfRoomSelected={setNumberOfRoomSelected}
+					 numberOfRoomSelected={numberOfRoomSelected} 
+					 guestLimitExceed={guestLimitExceed} 
+					 setGuestLimitExceed={setGuestLimitExceed}
+					  currentActiveRoom={currentActiveRoom} 
+					  guestAdultsInputValue={guestAdultsInputValue}
+					   guestChildrenInputValue={guestChildrenInputValue}
+					   extraGuest={extraGuest}                      // ✅ Pass it
+					   setExtraGuest={setExtraGuest}   
+					    guestInfantsInputValue={guestInfantsInputValue} 
+						setGuestAdultsInputValue={setGuestAdultsInputValue} 
+						setGuestChildrenInputValue={setGuestChildrenInputValue} 
+						setGuestInfantsInputValue={setGuestInfantsInputValue}
+						 className="flex-1" />
 				</form>
 
 				{/* extra guest  */}
-				<div className='flex justify-between items-center'>
+				{/* <div className='flex justify-between items-center'>
 					<div>
 						<p>Add Extra Guest</p>
 						<p className='text-sm'>{currentActiveRoom?.guest_fee > 0 && (`(₹${currentActiveRoom?.guest_fee}/person)`)}</p>
@@ -930,7 +940,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 						<option value='3'>3</option>
 						<option value='4'>4</option>
 					</select>
-				</div>
+				</div> */}
 
 				{/* SUM */}
 				{
@@ -999,8 +1009,8 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 							sizeClass="px-5 sm:px-7 py-3 !rounded-2xl"
 							// onClick={openModal}
 							// onClick={numberOfRoomSelected == 0 ? ()=>setGuestLimitExceed(true) : openModal}
-							onClick={()=>handleErrorMessageDisplay(openModal)}
-							// onClick={()=>handleErrorMessageDisplay(true)}
+							onClick={() => handleErrorMessageDisplay(openModal)}
+						// onClick={()=>handleErrorMessageDisplay(true)}
 						>
 							Reserve
 						</ButtonPrimary>
@@ -1026,7 +1036,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 			</div>
 		)
 	}
-//    console.log(surgedPrice,"rtdgs")
+	//    console.log(surgedPrice,"rtdgs")
 	const renderMobileSidebar = () => {
 		return (
 			<div className="fixed inset-x-0 bottom-0 z-40 block border-t border-neutral-200 bg-white py-2 dark:border-neutral-600 dark:bg-neutral-800 sm:py-3 lg:hidden">
@@ -1085,8 +1095,8 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 
 								<div className="nc-StayCard2 grid grid-cols-1 sm:grid-cols-3 gap-5 group relative w-full border-t border-neutral-200 dark:border-neutral-800 pt-5">
 									{getImageUrlsBySpaceType(item?.space_type).length > 0 &&
-									
-										<div className="relative w-full">
+
+										<div className="relative w-full" onClick={() => setActiveModal(item?.space_type)}>
 											<GallerySlider3
 												uniqueID="StayCard2_sampleID"
 												ratioClass="aspect-w-6 aspect-h-4"
@@ -1096,6 +1106,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 												href="javascript:void(0)"
 											/>
 											{/* <div className='mt-2' onClick={() => setActiveModal(item?.space_type)}>
+												
 												<Badge name={`${getImageUrlsBySpaceType(item?.space_type).length} Photos →`} color="red" className='cursor-pointer' />
 											</div> */}
 										</div>}
@@ -1109,12 +1120,12 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 														{item?.room_type}
 													</p>
 													<div className="flex items-center justify-between space-x-5 mt-3 text-sm text-neutral-700 dark:text-neutral-300 xl:justify-start">
-														
-													<div className="text-center">
-														<img className='h-6' src="/user.png" alt="userimage" />
+
+														<div className="text-center">
+															<img className='h-6' src="/user.png" alt="userimage" />
 															<p>x {item.accommodates}</p>
 														</div>
-														
+
 														<div className="text-center">
 															<svg
 																xmlns="http://www.w3.org/2000/svg"
@@ -1200,9 +1211,9 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 														</div>
 
 
-													
 
-														
+
+
 													</div>
 												</div>
 												<div className="flex items-start flex-col">
@@ -1211,59 +1222,59 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 													</p>
 
 
-													
-						<form>
-						
+
+													<form>
 
 
-						<select
-						id="rooms"
-						className="bg-gray-50 w-full min-w-[9rem] my-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-[#111827] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-						onChange={(e) => {
-						const selectedValue = parseInt(e.target.value);
-						const selectedIndex = e.target.selectedIndex - 1; // subtract 1 for the "Select" option
 
-						if (selectedValue === 0) {
-						const resetRoom = { type: '', count: 1, accommodates: 0, guest_fee: 0 };
-						setCurrentActiveRoom(resetRoom);
-						setRoomPrice(0);
-						setNumberOfRoomSelected(0);
-						localStorage.removeItem("selectedRoom");
-						} else {
-						const selectedRoomData = {
-						type: item?.room_type,
-						count: selectedValue,
-						accommodates: item?.accommodates,
-						guest_fee: item?.guest_fee,
-						room_price: item?.room_price,
-						room_id: item?.roomid,
-						space_type: rooms?.space_type,
-						selected_index: selectedIndex // <-- Store the index
-						};
+														<select
+															id="rooms"
+															className="bg-gray-50 w-full min-w-[9rem] my-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-[#111827] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+															onChange={(e) => {
+																const selectedValue = parseInt(e.target.value);
+																const selectedIndex = e.target.selectedIndex - 1; // subtract 1 for the "Select" option
 
-						setCurrentActiveRoom(selectedRoomData);
-						setRoomPrice(selectedValue * item?.room_price);
-						setNumberOfRoomSelected(selectedValue);
+																if (selectedValue === 0) {
+																	const resetRoom = { type: '', count: 1, accommodates: 0, guest_fee: 0 };
+																	setCurrentActiveRoom(resetRoom);
+																	setRoomPrice(0);
+																	setNumberOfRoomSelected(0);
+																	localStorage.removeItem("selectedRoom");
+																} else {
+																	const selectedRoomData = {
+																		type: item?.room_type,
+																		count: selectedValue,
+																		accommodates: item?.accommodates,
+																		guest_fee: item?.guest_fee,
+																		room_price: item?.room_price,
+																		room_id: item?.roomid,
+																		space_type: rooms?.space_type,
+																		selected_index: selectedIndex // <-- Store the index
+																	};
 
-						// Save to localStorage
-						localStorage.setItem("selectedRoom", JSON.stringify(selectedRoomData));
-						}
-						}}
-						>
-						<option value='0' selected={currentActiveRoom.type !== item?.room_type}>
-						Select {item?.room_type}
-						</option>
-						{[...Array(item?.total_rooms)].map((_, index) => {
-						const value = index + 1;
-						return (
-						<option key={value} value={value}>
-						{value} {item?.room_type}
-						</option>
-						);
-						})}
-						</select>
+																	setCurrentActiveRoom(selectedRoomData);
+																	setRoomPrice(selectedValue * item?.room_price);
+																	setNumberOfRoomSelected(selectedValue);
 
-						</form>
+																	// Save to localStorage
+																	localStorage.setItem("selectedRoom", JSON.stringify(selectedRoomData));
+																}
+															}}
+														>
+															<option value='0' selected={currentActiveRoom.type !== item?.room_type}>
+																Select {item?.room_type}
+															</option>
+															{[...Array(item?.total_rooms)].map((_, index) => {
+																const value = index + 1;
+																return (
+																	<option key={value} value={value}>
+																		{value} {item?.room_type}
+																	</option>
+																);
+															})}
+														</select>
+
+													</form>
 												</div>
 											</div>
 										</div>
