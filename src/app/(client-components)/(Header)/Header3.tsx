@@ -39,6 +39,7 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 	const [menuItem, setMenuItem] = useState<any>([])
 
 	//
+
 	useOutsideAlerter(headerInnerRef, () => {
 		setShowHeroSearch(null)
 		setCurrentTab('Stays')

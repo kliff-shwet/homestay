@@ -352,7 +352,8 @@ const ListingImageGallery: FC<Props> = ({ images = DEMO_IMAGE }) => {
                     <p className="text-sm text-gray-700 mb-2">
 					Where Families Find Comfort, and Every Stay Feels Like Home.
                     </p>
-					<p  className="text-sm text-gray-700 mb-2">Home Stay is more than a place to sleep — it's where families gather, laughter echoes through the halls, and every stay feels like coming home.</p>
+					<p  className="text-sm text-gray-700 mb-2">{"Home Stay is more than a place to sleep — it's where families gather, laughter echoes through the halls, and every stay feels like coming home."}</p>
+        
                   </div>
 
                   {/* Right: Large Image */}
