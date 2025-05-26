@@ -12,6 +12,8 @@ import {
 	WaterPoloIcon,
 	Wifi01Icon,
 } from '@/components/Icons'
+import type { SVGProps, ReactElement } from "react"
+
 import { ListingGalleryImage } from '@/components/listing-image-gallery/utils/types'
 
 export const PHOTOS: string[] = [
@@ -47,7 +49,8 @@ export const PHOTOS: string[] = [
 
 export const Amenities_demos: {
 	name: string
-	icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element
+	icon: (props: SVGProps<SVGSVGElement>) => ReactElement
+	// icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element
 }[] = [
 	{ name: 'Fast wifi', icon: Wifi01Icon },
 	{ name: 'Bathtub', icon: Bathtub02Icon },

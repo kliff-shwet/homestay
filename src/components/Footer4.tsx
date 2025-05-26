@@ -1,3 +1,5 @@
+import type { SVGProps, ReactElement } from "react"
+
 const navigation: {
 	solutions: { name: string; href: string }[]
 	support: { name: string; href: string }[]
@@ -6,7 +8,8 @@ const navigation: {
 	social: {
 		name: string
 		href: string
-		icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element
+		// icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element
+		icon: (props: SVGProps<SVGSVGElement>) => ReactElement
 	}[]
 } = {
 	solutions: [
