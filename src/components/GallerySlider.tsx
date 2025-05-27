@@ -9,6 +9,8 @@ import { variants } from '@/utils/animationVariants'
 import Link from 'next/link'
 import { Route } from '@/routers/types'
 
+const imageVariants = variants(340, 1)
+const MotionDiv = motion.div as typeof motion.div
 export interface GallerySliderProps {
 	className?: string
 	galleryImgs: (StaticImageData | string)[]
@@ -81,7 +83,7 @@ export default function GallerySlider({
 							<motion.div
 								key={index}
 								custom={direction}
-								variants={variants(340, 1)}
+								variants={imageVariants}
 								initial="enter"
 								animate="center"
 								exit="exit"
@@ -95,7 +97,7 @@ export default function GallerySlider({
 									onLoad={() => setLoaded(true)}
 									sizes="(max-width: 1025px) 100vw, 300px"
 								/>
-							</motion.div>
+							</motion.div> 
 						</AnimatePresence>
 					</Link>
 				</div>
