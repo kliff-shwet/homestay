@@ -78,7 +78,7 @@ const MapContainer: FC<MapContainerProps> = ({
 	return (
 		<>
 			{/* BELLOW IS MY GOOGLE API KEY -- PLEASE DELETE AND TYPE YOUR API KEY */}
-			<Map
+			{/* <Map
 				style={{
 					width: '100%',
 					height: '100%',
@@ -91,7 +91,57 @@ const MapContainer: FC<MapContainerProps> = ({
 				}}
 				gestureHandling={'greedy'}
 				mapId={process.env.NEXT_PUBLIC_GOOGLE_MAP_ID}
-			>
+			> */}
+{/* 
+<Map
+  style={{
+    width: '100%',
+    height: '100%',
+  }}
+  defaultZoom={11} // Best for city view
+  defaultCenter={{
+    lat: parseFloat(DEMO_DATA2[0]?.property_address?.latitude),
+    lng: parseFloat(DEMO_DATA2[0]?.property_address?.longitude),
+  }}
+  gestureHandling="greedy"
+  mapId={process.env.NEXT_PUBLIC_GOOGLE_MAP_ID}
+  options={{
+    minZoom: 6,
+    maxZoom: 12,
+    scrollwheel: true,
+    disableDoubleClickZoom: false,
+    draggable: true,
+    mapTypeControl: false,
+    streetViewControl: false,
+    fullscreenControl: false,
+  }}
+> */}
+
+<Map
+  style={{
+    width: '100%',
+    height: '100%',
+  }}
+  defaultZoom={11} // City-level view
+  minZoom={6}     // Restrict zoom out
+  maxZoom={12}     // Restrict zoom in
+  draggable={true}
+  scrollwheel={true}
+  disableDoubleClickZoom={true}
+  mapTypeControl={false}
+  streetViewControl={false}
+  fullscreenControl={false}
+  defaultCenter={{
+    lat: parseFloat(DEMO_DATA2[0]?.property_address?.latitude),
+    lng: parseFloat(DEMO_DATA2[0]?.property_address?.longitude),
+  }}
+  gestureHandling="greedy"
+  mapId={process.env.NEXT_PUBLIC_GOOGLE_MAP_ID}
+>
+
+
+
+
 				<MapControl position={ControlPosition.TOP_CENTER}>
 					<div className="z-10 mt-5 min-w-max rounded-2xl bg-neutral-100 px-4 py-2 shadow-xl dark:bg-neutral-900">
 						<Checkbox

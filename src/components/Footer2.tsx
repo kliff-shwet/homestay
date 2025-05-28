@@ -22,24 +22,23 @@ const navigation: {
 		{ name: 'Be a Responsible Guest', href: '#' },
 		{ name: 'Cancellation Policy', href: '#' },
 		{ name: 'Privacy Policy', href: '#' },
-		{ name: 'Terms and Conditions', href: '#' },
+		{ name: 'Guest Login', href: '#' },
 	],
 	support: [
-		{ name: 'Why list with Homestays of India', href: '#' },
+		{ name: 'Why list with HOI', href: '#' },
 		{ name: 'Social Initiatives', href: '#' },
 		{ name: 'List my Homestay', href: '#' },
 		{ name: 'Host Login', href: '#' },
 	],
 	company: [
-		{ name: 'Implact', href: '#' },
-		{ name: 'FAQ', href: '#' },
-		{ name: 'Blog', href: '#' },
-		{ name: 'Testimonials', href: '#' },
-		{ name: 'Why travel with HOI', href: '#' },
+		{ name: 'About Us', href: '#' },
+		{ name: 'Contact Us', href: '/contact' },
+		{ name: 'Work With Us', href: '#' },
+		{ name: 'Partner With Us', href: '#' },
 	],
 	legal: [
 		{ name: 'About us', href: '#' },
-		{ name: 'Contact us', href: '#' },
+		{ name: 'Contact us', href: '/contact' },
 		{ name: 'Work with us', href: '#' },
 		{ name: 'Partner with us', href: '#' },
 	],
@@ -128,12 +127,12 @@ export default function Footer2() {
 								<h3 className="text-md font-semibold text-white dark:text-neutral-300">
 									Guest
 								</h3>
-								<ul role="list" className="mt-3 space-y-1">
+								<ul role="list" className="mt-3 ">
 									{navigation.solutions.map((item) => (
 										<li key={item.name}>
 											<a
 												href={item.href}
-												className="text-sm/6 text-white hover:text-gray-900 dark:text-neutral-400"
+												className="fontsclass  text-sm/6 text-white hover:text-gray-900 dark:text-neutral-400"
 											>
 												{item.name}
 											</a>
@@ -145,12 +144,12 @@ export default function Footer2() {
 								<h3 className="text-md font-semibold text-white dark:text-neutral-300">
 									Host
 								</h3>
-								<ul role="list" className="mt-3 space-y-1">
+								<ul role="list" className="mt-3 space-y-1 ">
 									{navigation.support.map((item) => (
 										<li key={item.name}>
 											<a
 												href={item.href}
-												className="text-sm/6 text-white hover:text-gray-900 dark:text-neutral-400"
+												className=" fontsclass text-sm/6 text-white hover:text-gray-900 dark:text-neutral-400"
 											>
 												{item.name}
 											</a>
@@ -169,7 +168,7 @@ export default function Footer2() {
 										<li key={item.name}>
 											<a
 												href={item.href}
-												className="text-sm/6 text-white hover:text-gray-900 dark:text-neutral-400"
+												className="fontsclass text-sm/6 text-white hover:text-gray-900 dark:text-neutral-400"
 											>
 												{item.name}
 											</a>
@@ -186,7 +185,7 @@ export default function Footer2() {
 										<li key={index}>
 											<a
 												href={item.url}
-												className="text-sm/6 text-white hover:text-gray-900 dark:text-neutral-400"
+												className="fontsclass text-sm/6 text-white hover:text-gray-900 dark:text-neutral-400"
 											>
 												{item.name}
 											</a>

@@ -51,9 +51,14 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({ latitude, longi
       onLoad={onLoad}
       onUnmount={onUnmount}
       options={{
-        zoomControl: false, // Disable zoom control UI
-        scrollwheel: false, // Disable zooming with mouse scroll
-        disableDoubleClickZoom: true, // Disable zooming with double-click
+        minZoom: 6,
+    maxZoom: 12,
+    scrollwheel: true,
+    disableDoubleClickZoom: false,
+    draggable: true,
+    mapTypeControl: false,
+    streetViewControl: false,
+    fullscreenControl: false,
       }}
     >
       {/* You can add Marker or other components inside the map */}

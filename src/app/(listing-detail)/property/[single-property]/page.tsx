@@ -325,7 +325,11 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 				<div className="flex items-center space-x-4">
 					<div className="flex items-start">
 						<MapPinIcon className="h-5 w-5" />
-						<span className="ml-1">  {result?.property_address?.address_line_1}</span>
+						{/* <span className="ml-1">  {result?.property_address?.address_line_1}</span> */}
+						<span className="ml-1">
+  {result?.property_address?.address_line_1?.split(',').slice(1).join(',').trim()}
+</span>
+
 					</div>
 				</div>
 

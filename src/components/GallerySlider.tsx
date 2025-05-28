@@ -81,13 +81,14 @@ export default function GallerySlider({
 					>
 						<AnimatePresence initial={false} custom={direction}>
 							<motion.div
+								className="absolute inset-0"
 								key={index}
 								custom={direction}
 								variants={imageVariants}
 								initial="enter"
 								animate="center"
 								exit="exit"
-								className="absolute inset-0"
+							
 							>
 								<Image
 									src={currentImage || ''}
