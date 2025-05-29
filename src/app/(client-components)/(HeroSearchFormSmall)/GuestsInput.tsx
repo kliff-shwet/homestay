@@ -144,15 +144,15 @@ import ButtonSubmit from "./ButtonSubmit";
 import useOutsideAlerter from "@/hooks/useOutsideAlerter";
 import { PathName } from "@/routers/types";
 import NcInputNumber from "@/components/NcInputNumber";
-import { GuestsObject } from "../type";
+import { GuestsObject1 } from "../type";
 
 export interface GuestsInputProps {
   className?: string;
   fieldClassName?: string;
   autoFocus?: boolean;
   submitLink: PathName;
-  value?: GuestsObject;
-  onChange?: (val: GuestsObject) => void;
+  value?: GuestsObject1;
+  onChange?: (val: GuestsObject1) => void;
 }
 
 const GuestsInput: FC<GuestsInputProps> = ({
@@ -184,8 +184,8 @@ const GuestsInput: FC<GuestsInputProps> = ({
     }
   }, [value]);
 
-  const handleChangeData = (val: number, type: keyof GuestsObject) => {
-    const newGuests: GuestsObject = {
+  const handleChangeData = (val: number, type: keyof GuestsObject1) => {
+    const newGuests: GuestsObject1 = {
       adults: guestAdultsInputValue,
       children: guestChildrenInputValue,
       infants: guestInfantsInputValue,

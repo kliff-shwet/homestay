@@ -1,9 +1,9 @@
-// export interface GuestsObject {
-//   guestAdults?: number;
-//   guestChildren?: number;
-//   guestInfants?: number;
-// }
 export interface GuestsObject {
+  guestAdults?: number;
+  guestChildren?: number;
+  guestInfants?: number;
+}
+export interface GuestsObject1 {
   adults: number;
   children: number;
   infants: number;

@@ -68,11 +68,15 @@ const StaySearchForm: FC<StaySearchFormProps> = ({ defaultFieldFocus }) => {
     endDate,guests, "skajdad;sakdlj")
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+  const formatDate = (date: Date | null): string | null => {
+    return date ? date.toISOString().split("T")[0] : null;
+  };
     const formData = {
       location,
-      startDate,
-      endDate,
-      guests,
+      checkin: formatDate(startDate),
+      checkout: formatDate(endDate),
+      guest: guests.adults + guests.children + guests.infants,
     };
     console.log("Search Form Data:", formData);
     // Navigate or fetch based on this data
@@ -107,7 +111,7 @@ const StaySearchForm: FC<StaySearchFormProps> = ({ defaultFieldFocus }) => {
         autoFocus={defaultFieldFocus === "guests"}
         value={guests}
         onChange={setGuests}
-        submitLink="/listing-stay" 
+        submitLink="/" 
       />
     </form>
   );
