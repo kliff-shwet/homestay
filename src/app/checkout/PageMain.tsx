@@ -17,6 +17,9 @@ import NcModal from '@/shared/NcModal'
 
 import converSelectedDateToString from '@/utils/converSelectedDateToString'
 
+
+
+
 export interface CheckOutPagePageMainProps {
   className?: string
   startDate?: Date | null
@@ -65,11 +68,16 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 
   const { loggedUser } = useImages()
 
-  const [guests, setGuests] = useState<GuestsObject>({
+  const [guests, setGuests] = useState<{
+    guestAdults: number;
+    guestChildren: number;
+    guestInfants: number;
+  }>({
     guestAdults: guestAdultsInputValue,
     guestChildren: guestChildrenInputValue,
     guestInfants: guestInfantsInputValue,
-  })
+  });
+  
 
   const totleguests = guestAdultsInputValue + guestChildrenInputValue + guestInfantsInputValue
 

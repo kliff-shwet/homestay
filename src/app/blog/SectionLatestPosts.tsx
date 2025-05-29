@@ -114,7 +114,7 @@ const SectionLatestPosts: FC<SectionLatestPostsProps> = ({
 									</div>
 								</div>
 
-								<div className="mb-5 block flex-shrink-0 overflow-hidden rounded-3xl sm:mb-0 sm:ml-6 sm:w-56">
+								<div className=" imagesize mb-5 block flex-shrink-0 overflow-hidden rounded-3xl sm:mb-0 sm:ml-6 sm:w-56">
 									<Link
 										href={post.href as any}
 										className="aspect-h-9 aspect-w-16 block h-0 w-full sm:aspect-h-16"
