@@ -449,7 +449,7 @@ const ListingCarDetailPage: FC<ListingCarDetailPageProps> = ({}) => {
 
 	return (
 		<div className={`nc-ListingCarDetailPage`}>
-			{/* SINGLE HEADER */}
+			SINGLE HEADER
 			<header className="rounded-md sm:rounded-xl">
 				<div className="relative grid grid-cols-4 gap-1 sm:gap-2">
 					<div

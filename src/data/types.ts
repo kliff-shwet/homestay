@@ -37,19 +37,24 @@ export interface AuthorType {
 }
 
 export interface PostDataType {
-	id: string | number
-	author: AuthorType
-	date: string
-	href: Route<string>
-	categories: TaxonomyType[]
+	id: number
 	title: string
-	featuredImage: StaticImageData | string
-	desc?: string
-	commentCount: number
-	viewdCount: number
-	readingTime: number
-	postType?: 'standard' | 'video' | 'gallery' | 'audio'
-}
+	href: string
+	slug: string
+	featuredImage: string
+	desc: string
+	created_at: string
+	postType: string
+	categories: { name: string }[]
+	user: {
+	  id: number
+	  first_name: string
+	  last_name: string
+	  email: string
+	  profile_src: string
+	}
+  }
+  
 
 export type TwMainColor =
 	| 'pink'

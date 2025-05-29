@@ -217,7 +217,8 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 				setCategorizeRooms(rooms)
 				setConvenienceFee(data?.data?.fixedfees[0]?.convenience)
 				setGst(data?.data?.fixedfees[0]?.gst)
-				const photos = data.data.result?.property_photos?.map((photo: any) => photo.image_url);
+				const photos = data.data.result?.property_photos;
+				// ?.map((photo: any) => photo.image_url) 
 				setImagess(photos || [])
 			}
 		} catch (error) {

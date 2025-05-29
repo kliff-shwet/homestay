@@ -20,7 +20,14 @@ export const DEMO_IMAGE: ListingGalleryImage[] = [
   'https://images.pexels.com/photos/6129967/pexels-photo-6129967.jpeg',
   'https://images.pexels.com/photos/7163619/pexels-photo-7163619.jpeg',
   'https://images.pexels.com/photos/6527036/pexels-photo-6527036.jpeg',
-].map((url, index) => ({ id: index, url }))
+].map((url, index) => ({
+  id: index,
+  url: { image_url: url }, // convert string to object
+}))
+
+
+
+
 
  
  interface GetNewParamProps {
@@ -61,6 +68,7 @@ const ListingImageGallery: FC<Props> = ({ images = DEMO_IMAGE }) => {
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto()
   const lastViewedPhotoRef = useRef<HTMLDivElement>(null)
 
+
   useEffect(() => {
     if (lastViewedPhoto && !photoId) {
       lastViewedPhotoRef.current?.scrollIntoView({ block: 'center' })
@@ -89,6 +97,8 @@ const ListingImageGallery: FC<Props> = ({ images = DEMO_IMAGE }) => {
     params.delete('photoId')
     router.push(`${pathname}/?${params.toString()}` as any)
   }
+
+
 
   const selectedImage = updatedImages.find((img) => img.id === Number(photoId))
 
@@ -124,7 +134,7 @@ const ListingImageGallery: FC<Props> = ({ images = DEMO_IMAGE }) => {
                   <div className="w-full lg:w-7/12 flex items-center justify-center image_details">
                     <Image
                       alt="Selected"
-                      src={selectedImage.url}
+                      src={selectedImage.url.image_url}
                       width={1000}
                       height={800}
                       className="rounded-lg object-contain w-full max-h-[80vh]"
@@ -145,11 +155,12 @@ const ListingImageGallery: FC<Props> = ({ images = DEMO_IMAGE }) => {
                   >
                     <Image
                       alt="Thumbnail"
-                      src={img.url}
+                      src={img.url.image_url}
                       width={120}
                       height={80}
                       className="object-cover w-full h-24"
                     />
+                    <p>{img.url.message}</p>
                   </div>
                 ))}
               </div>

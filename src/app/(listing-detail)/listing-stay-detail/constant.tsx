@@ -68,12 +68,16 @@ export const Amenities_demos: {
 
 export const imageGallery: ListingGalleryImage[] = [...PHOTOS].map(
 	(item, index): ListingGalleryImage => {
-		return {
-			id: index,
-			url: item,
-		}
-	},
-)
+	  return {
+		id: index,
+		url: {
+		  image_url: item,       // convert string to expected object
+		  message: '',           // optional: leave empty or add your own logic
+		},
+	  };
+	}
+  );
+  
 
 
 export const Activities_demos: {

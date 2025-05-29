@@ -48,3 +48,23 @@ max-width: 90%;
   .fontsclass{
     font-size: 12px !important;
   }
+
+  .paddingnull{
+    padding: 10px 15px 10px 15px !important;
+    margin: 5px 10px 5px 10px !important;
+  }
+
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;             /* Safari and Chrome */
+  }
+
+
+
+  .marginttopa{
+    margin-top: -100px;
+  }

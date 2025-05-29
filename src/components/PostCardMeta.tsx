@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export interface PostCardMetaProps {
 	className?: string
-	meta: Pick<PostDataType, 'date' | 'author'>
+	meta: Pick<PostDataType, 'created_at' | 'user'>
 	hiddenAvatar?: boolean
 	size?: 'large' | 'normal'
 }
@@ -16,16 +16,18 @@ const PostCardMeta: FC<PostCardMetaProps> = ({
 	hiddenAvatar = false,
 	size = 'normal',
 }) => {
-	const { date, author } = meta
+	const { created_at, user } = meta
+	// console.log(meta,"datette")
+
 	return (
 		<div
-			className={`nc-PostCardMeta fledx-wrap inline-flex items-center text-neutral-800 dark:text-neutral-200 ${
+			className={`nc-PostCardMeta flex-wrap inline-flex items-center text-neutral-800 dark:text-neutral-200 ${
 				size === 'normal' ? 'text-sm' : 'text-base'
 			} ${className}`}
 			data-nc-id="PostCardMeta"
 		>
 			<Link
-				href={author.href}
+				href={"#"}
 				className="relative flex flex-shrink-0 items-center space-x-2"
 			>
 				{!hiddenAvatar && (
@@ -34,12 +36,12 @@ const PostCardMeta: FC<PostCardMetaProps> = ({
 						sizeClass={
 							size === 'normal' ? 'h-7 w-7 text-sm' : 'h-10 w-10 text-xl'
 						}
-						imgUrl={author.avatar}
-						userName={author.displayName}
+						imgUrl={user?.profile_src || 'https://homestay.kliffhost.in/public/images/default-profile.png'}
+						userName={`${user?.first_name || 'Unknown'} ${user?.last_name || ''}`}
 					/>
 				)}
 				<span className="block font-medium text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">
-					{author.displayName}
+					{user?.first_name} {user?.last_name}
 				</span>
 			</Link>
 			<>
@@ -47,7 +49,7 @@ const PostCardMeta: FC<PostCardMetaProps> = ({
 					·
 				</span>
 				<span className="line-clamp-1 font-normal text-neutral-500 dark:text-neutral-400">
-					{date}
+					{new Date(created_at).toLocaleDateString()}
 				</span>
 			</>
 		</div>

@@ -145,8 +145,10 @@ const TabFilters = () => {
 	const searchProperties = async () => {
 		try {
 
-			const requestData = { location, checkin, checkout, guest, bedrooms, beds, bathrooms, property_type: propertyType, space_type: spaceType, amenities: selectedAmenities, book_type: bookType, map_details: mapDetails, min_price: minPrice, max_price: maxPrice, currency_code: currencyCode, items, page };
-			const {data} = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/search`, requestData, {
+			const requestData = { location, checkin, checkout, guest, 
+				// bedrooms, beds, bathrooms, property_type: propertyType, space_type: spaceType, amenities: selectedAmenities, book_type: bookType, map_details: mapDetails, min_price: minPrice, max_price: maxPrice, currency_code: currencyCode, items, page
+			 };
+			const {data} = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/homesearch`, requestData, {
 				headers: {
 				  "x-api-key": process.env.NEXT_PUBLIC_X_API_KEY,
 				},
