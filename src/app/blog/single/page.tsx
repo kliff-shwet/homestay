@@ -270,10 +270,10 @@ const Page = () => {
 
 					<div className="flex">
 						<span className="block truncate font-medium text-neutral-200 hover:text-white">
-							{post.author.displayName}
+							{"jjksdlakj"}
 						</span>
 						<span className="mx-1.5 font-medium">·</span>
-						<span className="truncate font-normal">{post.date}</span>
+						<span className="truncate font-normal">{"no"}</span>
 					</div>
 				</div>
 				<Link href={post.href as Route} />

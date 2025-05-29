@@ -58,11 +58,11 @@ export const Amenities_demos = [
   { name: "Blind-Spot Collision Warning (BCW)", icon: carUtilities8 },
 ];
 
-export const imageGallery: ListingGalleryImage[] = [...PHOTOS].map(
-  (item, index): ListingGalleryImage => {
-    return {
-      id: index,
-      url: item,
-    };
+export const imageGallery: ListingGalleryImage[] = PHOTOS.map((item, index) => ({
+  id: index,
+  url: {
+    image_url: item,
   }
-);
+}));
+
+

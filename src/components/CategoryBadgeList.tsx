@@ -22,9 +22,9 @@ const CategoryBadgeList: FC<CategoryBadgeListProps> = ({
 				<Badge
 					className={itemClass}
 					key={index}
-					name={item.name}
-					href={item.href}
-					color={item.color as any}
+					name={"item.name"}
+					href={"#"}
+					color={"item.color "as any}
 				/>
 			))}
 		</div>

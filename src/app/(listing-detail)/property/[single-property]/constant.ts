@@ -66,14 +66,13 @@ export const Amenities_demos: {
 	{ name: 'Virtual Reality Vr', icon: VirtualRealityVr01Icon },
 ]
 
-export const imageGallery: ListingGalleryImage[] = [...PHOTOS].map(
-	(item, index): ListingGalleryImage => {
-		return {
-			id: index,
-			url: item,
-		}
-	},
-)
+export const imageGallery: ListingGalleryImage[] = PHOTOS.map((item, index) => ({
+	id: index,
+	url: {
+	  image_url: item,
+	}
+  }));
+  
 
 
 export const Activities_demos: {

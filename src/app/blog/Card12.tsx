@@ -20,7 +20,7 @@ const Card12: FC<Card12Props> = ({
 	return (
 		<div className={`nc-Card12 group relative flex flex-col ${className}`}>
 			<Link
-				href={href}
+				href={"#"}
 				className="aspect-h-3 aspect-w-4 relative block h-0 w-full flex-shrink-0 flex-grow overflow-hidden rounded-3xl"
 			>
 				<Image
@@ -43,7 +43,7 @@ const Card12: FC<Card12Props> = ({
 				<h2
 					className={`nc-card-title block text-lg font-semibold text-neutral-900 transition-colors dark:text-neutral-100 sm:text-2xl`}
 				>
-					<Link href={href} className="line-clamp-2" title={title}>
+					<Link href={"#"} className="line-clamp-2" title={title}>
 						{title}
 					</Link>
 				</h2>

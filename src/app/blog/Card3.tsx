@@ -25,7 +25,7 @@ const Card3: FC<Card3Props> = ({ className = 'h-full', post }) => {
 						<h2
 							className={`nc-card-title block text-xl font-semibold text-neutral-900 dark:text-neutral-100`}
 						>
-							<Link href={href} className="line-clamp-2" title={title}>
+							<Link href={"#"} className="line-clamp-2" title={title}>
 								{title}
 							</Link>
 						</h2>
@@ -44,7 +44,7 @@ const Card3: FC<Card3Props> = ({ className = 'h-full', post }) => {
 				className={`mb-5 block flex-shrink-0 overflow-hidden rounded-3xl sm:mb-0 sm:ml-6 sm:w-56`}
 			>
 				<Link
-					href={href}
+					href={"#"}
 					className={`aspect-h-9 aspect-w-16 block h-0 w-full sm:aspect-h-16`}
 				>
 					<Image
