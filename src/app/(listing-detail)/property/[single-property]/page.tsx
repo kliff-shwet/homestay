@@ -833,13 +833,13 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 		return (
 			<div className="listingSection__wrap">
 				<div>
-					<h2 className="text-2xl font-semibold">Activities </h2>
+					<h2 className="text-2xl font-semibold">Activities  </h2>
 				</div>
 				{/* 6 */}
 				<div className="flex gap-5 flex-wrap">
 					{description?.guestsactivity?.map((item: any, index: number) => (
 						<div key={index} className="flex items-center space-x-3">
-							<strong className='text-[1.5rem] text-gray-500'>&bull;</strong>
+							{/* <strong className='text-[1.5rem] text-gray-500'>&bull;</strong> */}
 							<span className=" ">{item}</span>
 						</div>
 					))}
