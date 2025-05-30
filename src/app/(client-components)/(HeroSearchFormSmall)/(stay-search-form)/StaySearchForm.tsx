@@ -42,6 +42,8 @@ import LocationInput from "../LocationInput";
 import GuestsInput from "../GuestsInput";
 import StayDatesRangeInput from "./StayDatesRangeInput";
 import { StaySearchFormFields } from "../../type";
+import ButtonSubmit from "../ButtonSubmit";
+import axios from "axios";
 
 export interface StaySearchFormProps {
   defaultFieldFocus?: StaySearchFormFields;
@@ -51,6 +53,7 @@ const StaySearchForm: FC<StaySearchFormProps> = ({ defaultFieldFocus }) => {
   const [location, setLocation] = useState<string>("");
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
+   const [featuredPlaces, setFeaturedPlaces] = useState([])
   const [guests, setGuests] = useState<{ adults: number; children: number; infants: number }>({
     adults: 1,
     children: 0,
@@ -64,23 +67,40 @@ const StaySearchForm: FC<StaySearchFormProps> = ({ defaultFieldFocus }) => {
   };
 
 
-  console.log(location,  startDate,
-    endDate,guests, "skajdad;sakdlj")
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
 
-  const formatDate = (date: Date | null): string | null => {
-    return date ? date.toISOString().split("T")[0] : null;
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+  
+    const formatDate = (date: Date | null): string | null => {
+      return date ? date.toISOString().split("T")[0] : null;
+    };
+  
     const formData = {
       location,
       checkin: formatDate(startDate),
       checkout: formatDate(endDate),
       guest: guests.adults + guests.children + guests.infants,
     };
+  
     console.log("Search Form Data:", formData);
-    // Navigate or fetch based on this data
+  
+    try {
+      const res = await axios.post(
+        "https://homestay.kliffhost.in/api/homesearch",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": process.env.NEXT_PUBLIC_X_API_KEY,
+          },
+        }
+      );
+      setFeaturedPlaces(res.data.data)
+    } catch (error) {
+      console.error("API Error:", error);
+    }
   };
+  
 
   return (
     <form
@@ -113,9 +133,14 @@ const StaySearchForm: FC<StaySearchFormProps> = ({ defaultFieldFocus }) => {
         onChange={setGuests}
         submitLink="/" 
       />
+      <div className="pr-2 m-2">
+          <ButtonSubmit />
+        </div>
     </form>
   );
 };
 
 export default StaySearchForm;
+
+
 

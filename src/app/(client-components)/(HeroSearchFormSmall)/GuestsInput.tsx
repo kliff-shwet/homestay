@@ -233,9 +233,7 @@ const GuestsInput: FC<GuestsInputProps> = ({
             />
           )}
         </div>
-        <div className="pr-2">
-          <ButtonSubmit href={submitLink} />
-        </div>
+        
       </div>
 
       {isOpen && (

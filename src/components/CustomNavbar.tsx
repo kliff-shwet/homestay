@@ -65,7 +65,7 @@ const CustomNavbar = ({ data }: { data: MenuItem[] }) => {
   const buildPath = (item: any, parentName: string): string => {
     if (item && parentName) {
       // Merge the parent menu name (remove spaces, lowercase)
-      const mergedParent = parentName.trim().replace(/\s+/g, "").toLowerCase();
+      const mergedParent = parentName.toLowerCase();
       return `/listing-stay/${mergedParent}/${item.url}`;
     }
     return "/";

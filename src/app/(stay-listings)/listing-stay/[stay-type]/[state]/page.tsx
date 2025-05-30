@@ -10,15 +10,25 @@ import Heading2 from "@/shared/Heading2";
 import SkeletonLoader3 from "@/components/skeleton/SkeletonLoader3";
 import { slice } from "lodash";
 import ButtonPrimary from "@/shared/ButtonPrimary";
+import { useParams } from "next/navigation";
 
 export interface ListingStayPageProps { }
 const itemsPerPage = 10;
 
 const ListingStayPage: FC<ListingStayPageProps> = () => {
 
+  const params = useParams();
+  const stayType = params['stay-type'];
+  const state = params['state'];
+  console.log(params['stay-type'], params['state']);
+
+
+
+
+  
   const { allProperties, setAllProperties } = useImages()
-  const [state, setState] = useState<any>()
-  const [stayType, setStayType] = useState<any>()
+  // const [state, setState] = useState<any>()
+  // const [stayType, setStayType] = useState<any>()
   const [loading, setLoading] = useState<boolean>(false)
   const [showMoreLoading, setShowMoreLoading] = useState<boolean>(false)
   const [toSlice, setToSlice] = useState<number>(8)
@@ -58,15 +68,15 @@ const ListingStayPage: FC<ListingStayPageProps> = () => {
     fetchFilteredProperties()
   }, [state, stayType])
 
-  useEffect(() => {
-    if (!location?.pathname) return
+  // useEffect(() => {
+  //   if (!location?.pathname) return
 
-    const segments = location.pathname.split('/').filter(Boolean)
-    if (segments.length >= 3) {
-      setStayType(segments[1])
-      setState(segments[2])
-    }
-  }, [location?.pathname])
+  //   const segments = location.pathname.split('/').filter(Boolean)
+  //   if (segments.length >= 3) {
+  //     setStayType(segments[1])
+  //     setState(segments[2])
+  //   }
+  // }, [location?.pathname])
 
   
   // convert state name to valid syntax 

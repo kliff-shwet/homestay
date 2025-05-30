@@ -105,6 +105,13 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 		fetchMenuItems()
 	},[])
 
+
+
+
+const handlesubmit=()=>{
+	console.log(showHeroSearch)
+}
+
 	//
 	const renderHeroSearch = () => {
 		return (
@@ -164,7 +171,7 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 					className="ml-auto flex-shrink-0 cursor-pointer pr-2"
 					onClick={() => setShowHeroSearch('location')}
 				>
-					<span className="bg-primary-600 flex h-6 w-6 m-1 mr-0 items-center justify-center rounded-full text-white">
+					<span  className="bg-primary-600 flex h-6 w-6 m-1 mr-0 items-center justify-center rounded-full text-white">
 						<MagnifyingGlassIcon className="h-4 w-4" />
 					</span>
 				</div>

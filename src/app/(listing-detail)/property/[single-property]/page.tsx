@@ -808,7 +808,11 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 
 				{/* CONTENT */}
 				<div>
-					{description?.about_place ? parse(description?.about_place) : ''}
+					{/* {description?.about_place ? parse(description?.about_place) : ''} */}
+
+					Up to 6 years: Complimentary (no extra bed) <br/>
+
+7-12 years.: 50% (with extra bed)
 				</div>
 			</div>
 		)
@@ -1101,7 +1105,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 								<div className="nc-StayCard2 grid grid-cols-1 sm:grid-cols-3 gap-5 group relative w-full border-t border-neutral-200 dark:border-neutral-800 pt-5">
 									{getImageUrlsBySpaceType(item?.space_type).length > 0 &&
 
-										<div className="relative w-full" onClick={() => setActiveModal(item?.space_type)}>
+										<div className="relative w-full" >
 											<GallerySlider3
 												uniqueID="StayCard2_sampleID"
 												ratioClass="aspect-w-6 aspect-h-4"
@@ -1109,6 +1113,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({ }) => {
 												galleryImgsMsg={getImageMessageBySpaceType(item?.space_type)}
 												imageClass="rounded-lg"
 												href="javascript:void(0)"
+												onImageClick={() => setActiveModal(item?.space_type)}
 											/>
 											{/* <div className='mt-2' onClick={() => setActiveModal(item?.space_type)}>
 												
